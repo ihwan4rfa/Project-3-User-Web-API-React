@@ -1,6 +1,6 @@
 import axios from "axios"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import Loading from "./Loading"
 import Navbar from "./Navbar"
 
@@ -37,6 +37,7 @@ const MainContent = () => {
 
             setTimeout(() => {
                 toggleButton();
+                setLoginClicked(true);
             }, 1500)
         } catch (error) {
             const errorMessageRegister = error.response.data.error;
@@ -96,8 +97,12 @@ const MainContent = () => {
     };
 
     const [btnClicked, setBtnClicked] = useState(false);
+    const [loginClicked, setLoginClicked] = useState(true);
+    const [registerClicked, setRegisterClicked] = useState(false);
     const toggleButton = () => {
         setBtnClicked(!btnClicked);
+        setLoginClicked(!loginClicked);
+        setRegisterClicked(!registerClicked);
         setErrorLogin(null);
         setErrorRegister(null);
         setTokenRegister(null);
@@ -107,6 +112,10 @@ const MainContent = () => {
         setPasswordRegister('');
         setSeePassword(false)
     }
+
+    useEffect(() => {
+        loginClicked ? navigate("/login") : navigate("/register");
+    }, [loginClicked]);
 
     const [seePassword, setSeePassword] = useState(false);
     const toggleSeePassword = () => {
@@ -126,7 +135,7 @@ const MainContent = () => {
     return (
         <div className="flex flex-col items-center justify-center h-screen font-montserrat">
             <div className={`bg-white rounded-[30px] translate-y-[4%] shadow-lg relative overflow-hidden w-1/2 max-w-full min-h-[400px] transition-all duration-300 ease-in-out ${transitionOut ? 'opacity-0' : ''} ${transitionIn ? 'opacity-0' : ''}`}>
-                <div className={`absolute top-0 h-full transition-all duration-500 ease-in-out w-1/2 ${btnClicked ? 'z-20 translate-x-[100%]' : 'z-10 translate-x-[0%]'}`}>
+                <div className={`absolute top-0 h-full transition-all duration-500 ease-in-out w-1/2 ${registerClicked ? 'z-20 translate-x-[100%]' : 'z-10 translate-x-[0%]'}`}>
                     <div className="flex flex-col items-center justify-center h-full px-10 bg-white">
                         <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Create Account</h1>
                         <div className="mt-2 mb-3">
@@ -145,7 +154,7 @@ const MainContent = () => {
                         <button onClick={handleRegister} className="bg-fuchsia-600 hover:bg-fuchsia-700 text-white text-[12px] py-[10px] px-8 rounded-lg font-semibold tracking-tight uppercase mt-3">Register</button>
                     </div>
                 </div>
-                <div className={`absolute top-0 h-full transition-all duration-500 ease-in-out w-1/2 ${btnClicked ? 'z-10 translate-x-[100%]' : 'z-20 translate-x-[0%]'}`}>
+                <div className={`absolute top-0 h-full transition-all duration-500 ease-in-out w-1/2 ${loginClicked ? 'z-20 translate-x-[0%]' : 'z-10 translate-x-[100%]'}`}>
                     <div className="flex flex-col items-center justify-center h-full px-10 bg-white">
                         <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Log In</h1>
                         <div className="mt-2 mb-3">
