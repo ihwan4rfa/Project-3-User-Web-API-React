@@ -1,6 +1,7 @@
 import LoginRegister from "../pages/LoginRegister";
-import Home from "../pages/Home";
 import ProtectedRoute from "./ProtectedRoute";
+import Home from "../pages/Home";
+import User from "../pages/User";
 
 export const routeList = [
     {
@@ -8,6 +9,14 @@ export const routeList = [
         element: (
             <ProtectedRoute>
                 <Home />
+            </ProtectedRoute>
+        )
+    },
+    {
+        path: 'user/:id',
+        element: (
+            <ProtectedRoute>
+                <User />
             </ProtectedRoute>
         )
     },
