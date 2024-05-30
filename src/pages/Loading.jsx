@@ -22,7 +22,7 @@ const Loading = () => {
     }, 1000)
 
     return (
-        <div className="flex items-center justify-center h-screen bg-gradient-to-r from-slate-200 to-slate-100">
+        <div className="flex items-center justify-center h-screen">
             <div className={`transition-all duration-300 ease-in-out ${timeLoading ? 'opacity-100' : 'opacity-0'}`}>
                 <lottie-player
                     src="https://lottie.host/4bd9620d-cb68-45ee-b4dd-1a265e42cbbc/X2UBIfDndd.json"
