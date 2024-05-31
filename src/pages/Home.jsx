@@ -66,7 +66,7 @@ const Home = () => {
                         <Link to={`/user/${user?.id}`} className="flex justify-between mx-16 my-3 bg-white rounded-full hover:shadow-md">
                             <div className="flex items-center ">
                                 <img className="w-20 h-20 p-2 mr-4 rounded-full" src={user?.avatar} alt="" />
-                                <h1 className="text-xl font-medium tracking-tight">{`${user?.first_name} ${user?.last_name}`}</h1>
+                                <h1 className="text-xl font-medium tracking-tight text-slate-900">{`${user?.first_name} ${user?.last_name}`}</h1>
                             </div>
                             <button className="px-5 my-6 mr-6 tracking-tight text-white rounded-full bg-sky-600 hover:bg-sky-700"><i className="fa-regular fa-envelope"></i></button>
                         </Link>
