@@ -57,10 +57,15 @@ const Home = () => {
         });
     }
 
+    const [transitionIn, setTransitionIn] = useState(true);
+    setTimeout(() => {
+        setTransitionIn(false)
+    }, 0)
+
     return (
         <div>
             <Navbar />
-            <div className="flex flex-col items-center pt-14 font-montserrat">
+            <div className={`flex flex-col items-center transition-all duration-300 ease-in-out pt-14 font-montserrat ${transitionIn ? 'opacity-0' : ''}`}>
                 <div className="relative w-full h-[470px]">
                     {users.map((user) => (
                         <Link to={`/user/${user?.id}`} className="flex justify-between mx-16 my-3 bg-white rounded-full hover:shadow-md">
@@ -72,7 +77,7 @@ const Home = () => {
                         </Link>
                     ))}
                 </div>
-                <div className="flex justify-center w-auto gap-8 px-5 py-1 mt-4 text-2xl bg-white rounded-full">
+                <div className="flex justify-center w-auto gap-8 px-5 py-1 mt-4 text-2xl bg-white rounded-full shadow-sm">
                     <button disabled={pagination.page === 1} onClick={handlePrevious}><i className={`fa-solid fa-angle-left ${pagination.page === 1 ? 'text-slate-300' : 'text-sky-600 hover:text-sky-700'}`}></i></button>
                     <div className="flex items-center gap-6">
                         {pages.map((number) => (
