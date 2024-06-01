@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router-dom"
 import { routeList } from "./routes/routeList";
 
-function App() {
+const App = () => {
   const element = useRoutes(routeList)
   return element;
 }

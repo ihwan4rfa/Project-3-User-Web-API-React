@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Loading from "./Loading"
 import Navbar from "./Navbar"
+import { useContext } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 const MainContent = () => {
 
@@ -132,22 +134,24 @@ const MainContent = () => {
         setTransitionIn(false)
     }, 0)
 
+    const data = useContext(ThemeContext);
+
     return (
-        <div className="flex flex-col items-center justify-center h-screen font-montserrat">
-            <div className={`bg-white rounded-[30px] translate-y-[4%] shadow-lg relative overflow-hidden w-1/2 max-w-full min-h-[400px] transition-all duration-300 ease-in-out ${transitionOut ? 'opacity-0' : ''} ${transitionIn ? 'opacity-0' : ''}`}>
+        <div className="flex flex-col items-center justify-center w-full h-screen font-montserrat bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-700">
+            <div className={`bg-white dark:bg-slate-900 rounded-[30px] translate-y-[4%] shadow-lg relative overflow-hidden w-1/2 max-w-full min-h-[400px] transition-all ease-in-out ${data.themeButtonClicked ? 'duration-0' : 'duration-300'} ${transitionOut ? 'opacity-0' : ''} ${transitionIn ? 'opacity-0' : ''}`}>
                 <div className={`absolute top-0 h-full transition-all duration-500 ease-in-out w-1/2 ${registerClicked ? 'z-20 translate-x-[100%]' : 'z-10 translate-x-[0%]'}`}>
-                    <div className="flex flex-col items-center justify-center h-full px-10 bg-white">
-                        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Create Account</h1>
+                    <div className="flex flex-col items-center justify-center h-full px-10 bg-white dark:bg-slate-900">
+                        <h1 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Create Account</h1>
                         <div className="mt-2 mb-3">
                             {Object.values(accountList).map((iconClass, index) => (
-                                <a className="inline-flex items-center justify-center mx-1 mt-4 mb-2 text-sm border border-slate-300 hover:border-slate-400 rounded-xl w-9 h-9 text-slate-900" href=""><i key={index} className={iconClass}></i></a>
+                                <a className="inline-flex items-center justify-center mx-1 mt-4 mb-2 text-sm border border-slate-300 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600 rounded-xl w-9 h-9 text-slate-900 dark:text-white" href=""><i key={index} className={iconClass}></i></a>
                             ))}
                         </div>
-                        <span className="mb-2 text-xs text-slate-900">or use your email for registration</span>
-                        <input value={emailRegister} onChange={handleChangeEmailRegister} className="bg-slate-200 placeholder:text-slate-400 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full outline-none" type="text" placeholder="Email" />
-                        <div className="flex bg-slate-200 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full">
-                            <input value={passwordRegister} onChange={handleChangePasswordRegister} className="w-full outline-none bg-slate-200 placeholder:text-slate-400" type={seePassword ? 'text' : 'password'} placeholder="Password" />
-                            <button onClick={toggleSeePassword}><i className={`text-slate-400 fa-solid ${seePassword ? 'fa-eye' : 'fa-eye-slash'}`}></i></button>
+                        <span className="mb-2 text-xs text-slate-900 dark:text-white">or use your email for registration</span>
+                        <input value={emailRegister} onChange={handleChangeEmailRegister} className="bg-slate-200 placeholder:text-slate-400 text-slate-900 dark:text-white dark:bg-slate-800 dark:placeholder:text-slate-500 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full outline-none" type="text" placeholder="Email" />
+                        <div className="flex bg-slate-200 dark:bg-slate-800 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full">
+                            <input value={passwordRegister} onChange={handleChangePasswordRegister} className="w-full outline-none bg-slate-200 placeholder:text-slate-400 text-slate-900 dark:text-white dark:bg-slate-800 dark:placeholder:text-slate-500" type={seePassword ? 'text' : 'password'} placeholder="Password" />
+                            <button onClick={toggleSeePassword}><i className={`text-slate-400 dark:text-slate-500 fa-solid ${seePassword ? 'fa-eye' : 'fa-eye-slash'}`}></i></button>
                         </div>
                         {tokenRegister ? <h1 className="text-[12px] text-green-500"><i className="mr-1 fa-solid fa-circle-check"></i>registration success!</h1> : ""}
                         {errorRegister ? <h1 className="text-[12px] text-red-500 text-center"><i className="mr-1 fa-solid fa-triangle-exclamation"></i>{errorRegister}</h1> : ""}
@@ -155,22 +159,22 @@ const MainContent = () => {
                     </div>
                 </div>
                 <div className={`absolute top-0 h-full transition-all duration-500 ease-in-out w-1/2 ${loginClicked ? 'z-20 translate-x-[0%]' : 'z-10 translate-x-[100%]'}`}>
-                    <div className="flex flex-col items-center justify-center h-full px-10 bg-white">
-                        <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Log In</h1>
+                    <div className="flex flex-col items-center justify-center h-full px-10 bg-white dark:bg-slate-900">
+                        <h1 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">Log In</h1>
                         <div className="mt-2 mb-3">
                             {Object.values(accountList).map((iconClass, index) => (
-                                <a className="inline-flex items-center justify-center mx-1 mt-4 mb-2 text-sm border border-slate-300 hover:border-slate-400 rounded-xl w-9 h-9 text-slate-900" href=""><i key={index} className={iconClass}></i></a>
+                                <a className="inline-flex items-center justify-center mx-1 mt-4 mb-2 text-sm border border-slate-300 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-600 rounded-xl w-9 h-9 text-slate-900 dark:text-white" href=""><i key={index} className={iconClass}></i></a>
                             ))}
                         </div>
-                        <span className="mb-2 text-xs text-slate-900">or use your email password</span>
-                        <input value={email} onChange={handleChangeEmail} className="bg-slate-200 placeholder:text-slate-400 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full outline-none" type="text" placeholder="Email" />
-                        <div className="flex bg-slate-200 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full">
-                            <input value={password} onChange={handleChangePassword} className="w-full outline-none bg-slate-200 placeholder:text-slate-400" type={seePassword ? 'text' : 'password'} placeholder="Password" />
-                            <button onClick={toggleSeePassword}><i className={`text-slate-400 fa-solid ${seePassword ? 'fa-eye' : 'fa-eye-slash'}`}></i></button>
+                        <span className="mb-2 text-xs text-slate-900 dark:text-white">or use your email password</span>
+                        <input value={email} onChange={handleChangeEmail} className="bg-slate-200 placeholder:text-slate-400 text-slate-900 dark:text-white dark:bg-slate-800 dark:placeholder:text-slate-500 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full outline-none" type="text" placeholder="Email" />
+                        <div className="flex bg-slate-200 dark:bg-slate-800 my-2 py-[10px] px-4 text-[13px] rounded-lg w-full">
+                            <input value={password} onChange={handleChangePassword} className="w-full outline-none bg-slate-200 placeholder:text-slate-400 text-slate-900 dark:text-white dark:bg-slate-800 dark:placeholder:text-slate-500" type={seePassword ? 'text' : 'password'} placeholder="Password" />
+                            <button onClick={toggleSeePassword}><i className={`text-slate-400 dark:text-slate-500 fa-solid ${seePassword ? 'fa-eye' : 'fa-eye-slash'}`}></i></button>
                         </div>
                         {token ? <h1 className="text-[12px] text-green-500"><i className="mr-1 fa-solid fa-circle-check"></i>log In success!</h1> : ""}
                         {errorLogin ? <h1 className="text-[12px] text-red-500 text-center"><i className="mr-1 fa-solid fa-triangle-exclamation"></i>Log In failed! {errorLogin}</h1> : ""}
-                        <button onClick={handleLogin} className="bg-sky-600 hover:bg-sky-700 text-white text-[12px] py-[10px] px-8 rounded-lg font-semibold tracking-tight uppercase mt-3 border">Log In</button>
+                        <button onClick={handleLogin} className="bg-sky-600 hover:bg-sky-700 text-white text-[12px] py-[10px] px-8 rounded-lg font-semibold tracking-tight uppercase mt-3">Log In</button>
                     </div>
                 </div>
                 <div className={`absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-all duration-500 ease-in-out z-30 ${btnClicked ? '-translate-x-[100%] rounded-r-[100px]' : 'translate-x-[0%] rounded-l-[100px]'}`}>

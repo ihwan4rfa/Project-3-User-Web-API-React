@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
+import ThemeContextProvider from './context/themeContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className="w-full h-screen bg-gradient-to-r from-slate-200 to-slate-100">
-    <React.StrictMode>
-      <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <ThemeContextProvider>
         <App />
-      </BrowserRouter>
-    </React.StrictMode>
-  </div>
+      </ThemeContextProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 )
