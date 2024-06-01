@@ -65,26 +65,26 @@ const Home = () => {
     return (
         <div>
             <Navbar />
-            <div className={`flex flex-col items-center transition-all duration-300 ease-in-out pt-14 font-montserrat ${transitionIn ? 'opacity-0' : ''}`}>
+            <div className={`flex flex-col h-screen items-center transition-all duration-300 ease-in-out pt-14 font-montserrat bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-700 ${transitionIn ? 'opacity-0' : ''}`}>
                 <div className="relative w-full h-[470px]">
                     {users.map((user) => (
-                        <Link to={`/user/${user?.id}`} className="flex justify-between mx-16 my-3 bg-white rounded-full hover:shadow-md">
+                        <Link to={`/user/${user?.id}`} className="flex justify-between mx-16 my-3 bg-white rounded-full hover:shadow-md dark:bg-slate-900 dark:hover:shadow-slate-700">
                             <div className="flex items-center ">
                                 <img className="w-20 h-20 p-2 mr-4 rounded-full" src={user?.avatar} alt="" />
-                                <h1 className="text-xl font-medium tracking-tight text-slate-900">{`${user?.first_name} ${user?.last_name}`}</h1>
+                                <h1 className="text-xl font-medium tracking-tight text-slate-900 dark:text-white">{`${user?.first_name} ${user?.last_name}`}</h1>
                             </div>
-                            <button className="px-5 my-6 mr-6 tracking-tight text-white rounded-full bg-sky-600 hover:bg-sky-700"><i className="fa-regular fa-envelope"></i></button>
+                            <button className="px-5 my-6 mr-6 tracking-tight text-white bg-blue-600 rounded-full hover:bg-blue-700 dark:bg-teal-600 dark:hover:bg-teal-700"><i className="fa-regular fa-envelope"></i></button>
                         </Link>
                     ))}
                 </div>
-                <div className="flex justify-center w-auto gap-8 px-5 py-1 mt-4 text-2xl bg-white rounded-full shadow-sm">
-                    <button disabled={pagination.page === 1} onClick={handlePrevious}><i className={`fa-solid fa-angle-left ${pagination.page === 1 ? 'text-slate-300' : 'text-sky-600 hover:text-sky-700'}`}></i></button>
+                <div className="flex justify-center w-auto gap-8 px-5 py-2 mt-4 text-xl bg-white rounded-full shadow-md dark:shadow-slate-700 dark:bg-slate-900">
+                    <button disabled={pagination.page === 1} onClick={handlePrevious}><i className={`fa-solid fa-angle-left ${pagination.page === 1 ? 'text-slate-300 dark:text-slate-700' : 'text-blue-600 hover:text-blue-700 dark:text-teal-600 dark:hover:text-teal-700'}`}></i></button>
                     <div className="flex items-center gap-6">
                         {pages.map((number) => (
-                            <button onClick={() => handleClickPage(number)} className={`text-lg font-medium rounded-md h-7 w-7 ${number === pagination.page ? 'bg-sky-600 text-white' : 'text-slate-300 hover:text-sky-600'}`}>{number}</button>
+                            <button onClick={() => handleClickPage(number)} className={`text-lg font-medium rounded-md h-7 w-7 ${number === pagination.page ? 'bg-blue-600 dark:bg-teal-600 text-white' : 'text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800'}`}>{number}</button>
                         ))}
                     </div>
-                    <button disabled={pagination.page === pagination.total_pages} onClick={handleNext}><i className={`fa-solid fa-angle-right ${pagination.page === pagination.total_pages ? 'text-slate-300' : 'text-sky-600 hover:text-sky-700'}`}></i></button>
+                    <button disabled={pagination.page === pagination.total_pages} onClick={handleNext}><i className={`fa-solid fa-angle-right ${pagination.page === pagination.total_pages ? 'text-slate-300 dark:text-slate-700' : 'text-blue-600 hover:text-blue-700 dark:text-teal-600 dark:hover:text-teal-700'}`}></i></button>
                 </div>
             </div>
         </div>

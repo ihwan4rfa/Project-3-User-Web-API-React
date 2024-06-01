@@ -19,15 +19,15 @@ const Loading = () => {
 
     setTimeout(() => {
         setTimeLoading(false);
-    }, 1000)
+    }, 2500)
 
     return (
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-screen bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-700">
             <div className={`transition-all duration-300 ease-in-out ${timeLoading ? 'opacity-100' : 'opacity-0'}`}>
                 <lottie-player
-                    src="https://lottie.host/4bd9620d-cb68-45ee-b4dd-1a265e42cbbc/X2UBIfDndd.json"
-                    speed="2"
-                    style={{ width: '150px', height: '150px' }}
+                    src="https://lottie.host/9f12b545-3e37-4dbd-943a-2061a8508db6/Isvj3aXYxN.json"
+                    speed="1.5"
+                    style={{ width: '350px', height: '350px' }}
                     loop
                     autoplay
                 ></lottie-player>
