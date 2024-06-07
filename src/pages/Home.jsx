@@ -68,12 +68,12 @@ const Home = () => {
             <div className={`flex flex-col h-screen items-center transition-all duration-300 ease-in-out pt-14 font-montserrat bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-700 ${transitionIn ? 'opacity-0' : ''}`}>
                 <div className="relative w-full h-[470px]">
                     {users.map((user) => (
-                        <Link to={`/user/${user?.id}`} className="flex justify-between mx-16 my-3 bg-white rounded-full hover:shadow-md dark:bg-slate-900 dark:hover:shadow-slate-700">
+                        <Link to={`/user/${user?.id}`} className="flex justify-between mx-5 my-3 bg-white rounded-full md:mx-16 hover:shadow-md dark:bg-slate-900 dark:hover:shadow-slate-700">
                             <div className="flex items-center ">
-                                <img className="w-20 h-20 p-2 mr-4 rounded-full" src={user?.avatar} alt="" />
-                                <h1 className="text-xl font-medium tracking-tight text-slate-900 dark:text-white">{`${user?.first_name} ${user?.last_name}`}</h1>
+                                <img className="w-20 h-20 p-2 mr-2 rounded-full md:mr-4" src={user?.avatar} alt="" />
+                                <h1 className="text-base font-medium tracking-tight md:text-xl text-slate-900 dark:text-white">{`${user?.first_name} ${user?.last_name}`}</h1>
                             </div>
-                            <button className="px-5 my-6 mr-6 tracking-tight text-white bg-blue-600 rounded-full hover:bg-blue-700 dark:bg-teal-600 dark:hover:bg-teal-700"><i className="fa-regular fa-envelope"></i></button>
+                            <button className="px-3 my-6 mr-6 text-sm tracking-tight text-white bg-blue-600 rounded-full md:px-5 md:text-base hover:bg-blue-700 dark:bg-teal-600 dark:hover:bg-teal-700"><i className="fa-regular fa-envelope"></i></button>
                         </Link>
                     ))}
                 </div>
