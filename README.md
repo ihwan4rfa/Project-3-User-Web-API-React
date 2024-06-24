@@ -1,9 +1,9 @@
 # SpyMasters Website
 
-Register:
-email: eve.holt@reqres.in
-password: pistol
-
-Login:
-email: eve.holt@reqres.in
+Register: <br/>
+email: eve.holt@reqres.in <br/>
+password: pistol 
+<br/><br/>
+Login: <br/>
+email: eve.holt@reqres.in <br/>
 password: cityslicka
